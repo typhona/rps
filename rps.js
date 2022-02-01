@@ -12,13 +12,14 @@ let computerScore = 0;
 
 
 function computerPlay() {
-  turn = Math.floor(Math.random() * choices.length)
-  return choices[turn];
+  compTurn = Math.floor(Math.random() * choices.length)
+  return choices[compTurn];
 }
 
 function playerPlay() {
-  turn = Math.floor(Math.random() * choices.length)
-  return choices[turn];
+  playerTurn = window.prompt("Please choose Rock, Paper, or Scissors")
+  // turn = Math.floor(Math.random() * choices.length)
+  return playerTurn.toLowerCase();
 }
 
 function playRound(playerSelection, computerSelection) {
