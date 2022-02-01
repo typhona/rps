@@ -1,4 +1,4 @@
 # rps
 Rock Paper Scissors
-
-So far I have both the player and the computer selecting random choices. Next step will be to add the prompt for the user to manually select rock, paper, or scissors. Also have the scoring working for all potential outcomes.
+I have the scoring working for all potential outcomes.
+Now with prompt working with converting all inputs to lowercase
