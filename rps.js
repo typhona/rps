@@ -34,15 +34,15 @@ function playRound(playerSelection, computerSelection) {
 
     // options for when player selects paper
   } else if (computerSelection == choices[0] && playerSelection == choices[1]) {
-    return "You win: Paper beats rock."
+    return "You win: " + choices[1] + " beats " + choices[0] + "."
   } else if (computerSelection == choices[2] && playerSelection == choices[1]) {
-    return "You lose: Scissors beats paper."
+    return "You lose: " + choices[1] + " beats " + choices[2] + "."
 
     // options for when player selects scissors
   } else if (computerSelection == choices[0] && playerSelection == choices[2]) {
-    return "You lose: rock beats scissor."
+    return "You lose: " + choices[0] + " beats " + choices[2] + "."
   } else if (computerSelection == choices[1] && playerSelection == choices[2]) {
-    return "You win: Scissors beats paper."
+    return "You win: " + choices[2] + " beats " + choices[1] + "."
   }
 
 }
