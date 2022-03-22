@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.choices {
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* border: 2px solid red; */
+}
+
+button {
+  border: none;
+  padding: 1rem;
+  border-radius: 10px;
+  background: blue;
+  color: white;
+  box-shadow: 3px 3px 7px 1px black;
+  font-weight: bold;
+}
+
+button:hover {
+  /* transition: all .5s ease-in;
+  transform: opacity(.5); */
+  /* border: 2px solid blue; */
+  background: white;
+  color: blue;
+}
+
+.clicked {
+  background: green;
+}

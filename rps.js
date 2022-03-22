@@ -5,27 +5,21 @@ let choices = ["rock", "paper", "scissors"];
 let playerScore = 0;
 let computerScore = 0;
 
+let rockBtn = document.querySelector('.rock');
+rockBtn.addEventListener('click', function() {
+  rockBtn.classList.add('.clicked');
+  console.log(rockBtn.classList);
+});
+
 
 function computerPlay() {
   compTurn = Math.floor(Math.random() * choices.length)
   return choices[compTurn];
 }
 
-function playerPlay() {
-  playerTurn = window.prompt("Please choose Rock, Paper, or Scissors");
-  playerTurn = playerTurn.toLowerCase();
-
-  if (playerTurn != "rock" && playerTurn != "paper" && playerTurn != "scissors") {
-    // console.log(playerTurn)
-    tryAgain = window.prompt("Please try again, the options are : Rock, Paper, or Scissors")
-    // tryAgain = playerTurn;
-    // tryAgain = tryAgain.tolowerCase();
-    playerTurn = tryAgain;
-    // } else {
-    //   return playerTurn;
-    // }
-  }
-  return playerTurn;
+function playerPlay(choice) {
+  // playerTurn = choice;
+  return choice;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -51,23 +45,24 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
 
-  for (i = 0; i < 5; i++) {
-    computerSelection = computerPlay();
-    playerSelection = playerPlay();
-    round = playRound(playerSelection, computerSelection);
-    if (round == win) {
-      playerScore += 1;
-    } else if (round == lose) {
-      computerScore += 1;
-    }
-
-    // Display results per round
-    console.log("Game: " + (i + 1))
-    console.log(round);
-    console.log("Players Score: " + playerScore);
-    console.log("Computers Score: " + computerScore);
-    console.log("\n")
+  // for (i = 0; i < 5; i++) {
+  computerSelection = computerPlay();
+  playerSelection = playerPlay();
+  round = playRound(playerSelection, computerSelection);
+  if (round == win) {
+    playerScore += 1;
+  } else if (round == lose) {
+    computerScore += 1;
   }
+
+  // Display results per round
+  // console.log("Game: " + (i + 1))
+  console.log("One and only One")
+  console.log(round);
+  console.log("Players Score: " + playerScore);
+  console.log("Computers Score: " + computerScore);
+  console.log("\n")
+  // } End of the for loop (5 games)
 
   // Display final score and announce the winner.
   console.log("Final Score:");
@@ -81,4 +76,4 @@ function game() {
   }
 
 }
-game();
+// game();
