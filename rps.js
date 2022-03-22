@@ -1,9 +1,5 @@
 // The Odin Project  Javascript basics -- 7. Project: Rock Paper Scissors
-// allen smith 2022
-
-// rock beats scissors
-// paper beats rock
-// scissors beats paper
+// Allen Smith 2022
 
 let choices = ["rock", "paper", "scissors"];
 let playerScore = 0;
@@ -16,33 +12,39 @@ function computerPlay() {
 }
 
 function playerPlay() {
-  playerTurn = window.prompt("Please choose Rock, Paper, or Scissors")
-  // turn = Math.floor(Math.random() * choices.length)
-  return playerTurn.toLowerCase();
+  playerTurn = window.prompt("Please choose Rock, Paper, or Scissors");
+  playerTurn = playerTurn.toLowerCase();
+
+  if (playerTurn != "rock" && playerTurn != "paper" && playerTurn != "scissors") {
+    // console.log(playerTurn)
+    tryAgain = window.prompt("Please try again, the options are : Rock, Paper, or Scissors")
+    // tryAgain = playerTurn;
+    // tryAgain = tryAgain.tolowerCase();
+    playerTurn = tryAgain;
+    // } else {
+    //   return playerTurn;
+    // }
+  }
+  return playerTurn;
 }
 
 function playRound(playerSelection, computerSelection) {
-  // when there is a tie
+
+  win = "You win: " + playerSelection + " beats " + computerSelection + "."
+  lose = "You lose: " + computerSelection + " beats " + playerSelection + "."
+
   if (computerSelection == playerSelection) {
     return "Its a tie: You both picked " + playerSelection + ".";
 
-    //options for when player selects rock
-  } else if (computerSelection == choices[1] && playerSelection == choices[0]) {
-    return "You lose: " + choices[1] + " beats " + choices[0] + "."
-  } else if (computerSelection == choices[2] && playerSelection == choices[0]) {
-    return "You win: " + choices[0] + " beats " + choices[2] + "."
+  } else if (computerSelection == choices[1] && playerSelection == choices[0] ||
+    computerSelection == choices[2] && playerSelection == choices[1] ||
+    computerSelection == choices[0] && playerSelection == choices[2]) {
+    return lose;
 
-    // options for when player selects paper
-  } else if (computerSelection == choices[0] && playerSelection == choices[1]) {
-    return "You win: " + choices[1] + " beats " + choices[0] + "."
-  } else if (computerSelection == choices[2] && playerSelection == choices[1]) {
-    return "You lose: " + choices[1] + " beats " + choices[2] + "."
-
-    // options for when player selects scissors
-  } else if (computerSelection == choices[0] && playerSelection == choices[2]) {
-    return "You lose: " + choices[0] + " beats " + choices[2] + "."
-  } else if (computerSelection == choices[1] && playerSelection == choices[2]) {
-    return "You win: " + choices[2] + " beats " + choices[1] + "."
+  } else if (computerSelection == choices[0] && playerSelection == choices[1] ||
+    computerSelection == choices[2] && playerSelection == choices[0] ||
+    computerSelection == choices[1] && playerSelection == choices[2]) {
+    return win;
   }
 
 }
@@ -53,34 +55,21 @@ function game() {
     computerSelection = computerPlay();
     playerSelection = playerPlay();
     round = playRound(playerSelection, computerSelection);
-
-    // incremental scoring algorithm
-
-    // players score increments by 1
-    if (computerSelection == choices[0] && playerSelection == choices[1] ||
-      computerSelection == choices[1] && playerSelection == choices[2] ||
-      computerSelection == choices[2] && playerSelection == choices[0]) {
+    if (round == win) {
       playerScore += 1;
-
-      // computers score increments by 1
-    } else if (computerSelection == choices[0] && playerSelection == choices[2] ||
-      computerSelection == choices[1] && playerSelection == choices[0] ||
-      computerSelection == choices[2] && playerSelection == choices[1]) {
+    } else if (round == lose) {
       computerScore += 1;
-
-      // when there is a tie
-    } else {
-      playerScore = playerScore;
-      computerScore = computerScore;
     }
+
     // Display results per round
-    console.log("Game " + [i + 1])
+    console.log("Game: " + (i + 1))
     console.log(round);
     console.log("Players Score: " + playerScore);
     console.log("Computers Score: " + computerScore);
     console.log("\n")
   }
-  // display final score and announce the winner.
+
+  // Display final score and announce the winner.
   console.log("Final Score:");
   if (playerScore > computerScore) {
     console.log("Player wins: " + playerScore + " to " + computerScore);
@@ -92,5 +81,4 @@ function game() {
   }
 
 }
-// actually run the game
 game();
